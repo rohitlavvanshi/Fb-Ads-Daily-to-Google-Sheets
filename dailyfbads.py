@@ -13,14 +13,14 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Google Sheets API Setup
-service_account_file = 'C:/Users/AAdmin/Desktop/Projects/Test/service_account.json'
+service_account_file = 'service-json-path'
 scopes = ["https://www.googleapis.com/auth/spreadsheets"]
 
 credentials = Credentials.from_service_account_file(service_account_file, scopes=scopes)
 gc = gspread.authorize(credentials)
 
 # Open the "Ad Account Id's" sheet
-spreadsheet_id = '1YLBkV-jFCcHBpj6akpNuHDJcoNovEFglGaQ3cxJN7UQ'
+spreadsheet_id = 'your-google-sheet-id'
 ad_account_sheet = gc.open_by_key(spreadsheet_id).worksheet("Ad Account Id's")
 
 # Fetch all data from the "Ad Account Id's" sheet
@@ -67,9 +67,9 @@ def refresh_access_token(app_id, app_secret, current_token):
         return current_token  # Use the current token if an exception occurs
 
 # Your Facebook API credentials
-access_token = 'EAAG1wA3eIU0BOwJhNQDYvIkOvqSQQDwzaAMiZBepSvalnyAlK4rOH55PqJd9k2jzvD8pfosx4d70JGD2xk3CTCZBL074pZCc0453iW8csDVClEuJA40ATjIsFdCZAAGjkpP1Hsd0hK7qgVyi9I3fDYroKbgnooSpveVGrRSZCwbNJ6yei5SFhKqfS4UCJTgaZB'
-app_secret = '28a4d12119645fe1dd56a11eb5f53f0e'
-app_id = '481311447720269'
+access_token = 'Facebook-developer-access-token'
+app_secret = 'Facebook-developer-app-secret'
+app_id = 'Facebook-developer-app-id'
 
 # Refresh the access token and update it
 access_token = refresh_access_token(app_id, app_secret, access_token)
